@@ -2,7 +2,9 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import os
 
+folder = "Digits"   
 # # importing data
 # data = tf.keras.datasets.mnist
 # # Train_test Splitting
@@ -28,9 +30,7 @@ import tensorflow as tf
 # print("Loss:",loss)
 
 # model.save('handwritten.keras')
-import os
 
-folder = "Digits"   # jis folder me aapke images hain
 
 
 model=tf.keras.models.load_model('handwritten.keras')
@@ -44,7 +44,8 @@ for i in range(0,11):
 
     img=cv.resize(img,(28,28)) # resizing the image to 28x28
     img = tf.keras.utils.normalize(img, axis=1)
-    img=np.invert(np.array([img])) # inverting the image
+    img = np.invert(img.astype(np.uint8)) # inverting the image
+    img=img.reshape(1,28,28) # reshaping the image to (1,28,28)
     prediction=model.predict(img) # predicting the image
     print("Prediction:",np.argmax(prediction)) # printing the predicted class
     plt.imshow(img[0],cmap=plt.cm.binary) # displaying the image
