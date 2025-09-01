@@ -3,4 +3,4 @@
 
 Practicing neural network .. Hand writen words classification.............
 
-Introduces a Python script using TensorFlow and Keras to build and train a neural network for MNIST digit classification. 
+Introduces a Python script using TensorFlow and Keras to build and train a neural network for MNIST digit classification.
