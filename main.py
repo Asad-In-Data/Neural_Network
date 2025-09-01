@@ -21,3 +21,10 @@ model.add(tf.keras.layers.Dense(10,activation='softmax')) # output layer # softm
 model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
     # adam is an optimization algorithm # sparse_categorical_crossentropy is used for multi-class classification  
 model.fit(x_train,train_y,epochs=10) # epochs is the number of times the model will see the entire dataset
+
+accuracy=model.evaluate(x_test,test_y)
+loss=model.evaluate(x_test,test_y)
+print("Accuracy:",accuracy)
+print("Loss:",loss)
+
+model.save('handwritten.model')
